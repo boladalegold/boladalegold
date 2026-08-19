@@ -1,0 +1,2148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Boladale Gold | Clinician · Author · Prophetic Voice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink:    #1A0F22;
+    --gold:   #B8922A;
+    --goldlt: #D4B06A;
+    --golddk: #7A5C10;
+    --cream:  #F8F3EC;
+    --sage:   #6B8C74;
+    --plum:   #3D1A4A;
+    --plumlt: #6B3D7D;
+    --mist:   #EDE6DC;
+    --white:  #FDFAF6;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+  h1,h2,h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 48px;
+    background: rgba(253,250,246,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(184,146,42,0.15);
+    transition: padding .4s;
+  }
+  nav.scrolled { padding: 14px 48px; }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--plum); letter-spacing: .06em; font-weight: 500; text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); text-decoration: none; opacity: .7; transition: opacity .2s, color .2s; }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+  .nav-cta {
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    border: 1px solid var(--gold); color: var(--gold);
+    padding: 10px 22px; border-radius: 2px; text-decoration: none;
+    transition: all .25s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--white); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--plum); transition: all .3s; }
+  .mobile-menu { display: none; position: fixed; inset: 0; background: var(--white); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 36px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--plum); text-decoration: none; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 48px 80px;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 30%, rgba(184,146,42,.07) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(61,26,74,.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-text { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 11px; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 36px; height: 1px; background: var(--gold); }
+  .hero-name {
+    font-size: clamp(52px, 7vw, 88px);
+    line-height: 1.0;
+    color: var(--plum);
+    margin-bottom: 8px;
+    letter-spacing: -.01em;
+  }
+  .hero-name em { color: var(--gold); font-style: italic; }
+  .hero-title {
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: var(--sage);
+    font-weight: 300;
+    letter-spacing: .04em;
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+  .hero-verse {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-style: italic;
+    color: var(--plum); opacity: .7;
+    line-height: 1.8;
+    border-left: 2px solid var(--gold);
+    padding-left: 20px;
+    margin-bottom: 44px;
+    max-width: 420px;
+  }
+  .hero-verse small { display: block; font-style: normal; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-top: 6px; opacity: 1; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--plum); color: var(--white);
+    padding: 15px 32px; border-radius: 2px;
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    text-decoration: none; transition: all .28s;
+    border: 1px solid var(--plum);
+  }
+  .btn-primary:hover { background: var(--plumlt); border-color: var(--plumlt); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(61,26,74,.22); }
+  .btn-secondary {
+    border: 1px solid var(--gold); color: var(--gold);
+    padding: 15px 32px; border-radius: 2px;
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    text-decoration: none; transition: all .28s;
+  }
+  .btn-secondary:hover { background: var(--gold); color: var(--white); transform: translateY(-2px); }
+
+  /* Hero image side */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-portrait-frame {
+    width: 100%;
+    max-width: 460px;
+    aspect-ratio: 3/4;
+    position: relative;
+    margin: 0 auto;
+  }
+  .hero-portrait-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(145deg, var(--mist) 0%, #D4C5B0 100%);
+    border-radius: 4px;
+  }
+  .hero-portrait-accent {
+    position: absolute;
+    top: -16px; right: -16px;
+    width: 60%; height: 60%;
+    border: 1px solid rgba(184,146,42,.3);
+    border-radius: 4px;
+    pointer-events: none;
+  }
+  .hero-portrait-accent2 {
+    position: absolute;
+    bottom: -16px; left: -16px;
+    width: 50%; height: 50%;
+    border: 1px solid rgba(61,26,74,.15);
+    border-radius: 4px;
+    pointer-events: none;
+  }
+  .hero-portrait-inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 40px;
+    text-align: center;
+  }
+  .portrait-initials {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, var(--plum), var(--plumlt));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; color: var(--goldlt);
+    margin-bottom: 24px;
+    box-shadow: 0 12px 40px rgba(61,26,74,.25);
+  }
+  .portrait-name-card { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--plum); margin-bottom: 8px; }
+  .portrait-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 20px; }
+  .portrait-tag { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; border: 1px solid rgba(184,146,42,.4); color: var(--golddk); padding: 5px 12px; border-radius: 20px; }
+  .hero-stat-strip {
+    position: absolute; bottom: -28px; left: 0; right: 0;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    background: var(--plum);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .hero-stat { padding: 18px 16px; text-align: center; border-right: 1px solid rgba(255,255,255,.1); }
+  .hero-stat:last-child { border-right: none; }
+  .hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--goldlt); line-height: 1; }
+  .hero-stat-lbl { font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-top: 4px; }
+
+  /* ── SECTION BASE ── */
+  section { position: relative; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .section-label {
+    font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-label::after { content: ''; flex: 1; max-width: 48px; height: 1px; background: var(--gold); }
+  .section-head { font-size: clamp(32px, 4vw, 52px); color: var(--plum); line-height: 1.15; margin-bottom: 24px; }
+
+  /* ── ABOUT ── */
+  #about { padding: 120px 0 100px; background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
+  .about-left { position: sticky; top: 120px; }
+  .about-pull {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    color: var(--plum); line-height: 1.55;
+    font-style: italic; margin-bottom: 32px;
+  }
+  .about-pull strong { color: var(--gold); font-style: normal; }
+  .about-badges { display: flex; flex-direction: column; gap: 12px; }
+  .about-badge {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 18px;
+    background: var(--white); border-radius: 4px;
+    border-left: 3px solid var(--gold);
+  }
+  .about-badge-icon { font-size: 18px; flex-shrink: 0; }
+  .about-badge-text { font-size: 13px; color: var(--ink); opacity: .85; line-height: 1.5; }
+  .about-badge-text strong { display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 2px; }
+  .about-body p { font-size: 16px; line-height: 1.9; color: var(--ink); opacity: .82; margin-bottom: 22px; }
+  .about-body p:last-child { margin-bottom: 0; }
+  .about-body em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--plum); font-size: 18px; }
+
+  /* ── IDENTITY STRIP ── */
+  .identity-strip {
+    padding: 60px 0;
+    background: var(--plum);
+    overflow: hidden;
+  }
+  .identity-scroll {
+    display: flex; gap: 0;
+    animation: marquee 28s linear infinite;
+    width: max-content;
+  }
+  .identity-item {
+    display: flex; align-items: center; gap: 32px;
+    padding: 0 48px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 34px);
+    color: rgba(255,255,255,.25);
+    white-space: nowrap;
+  }
+  .identity-item.active { color: var(--goldlt); }
+  .identity-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+  /* ── BRANDS ── */
+  #brands { padding: 110px 0; }
+  .brands-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 56px; }
+  .brand-card {
+    padding: 48px 40px;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    transition: transform .3s;
+  }
+  .brand-card:hover { transform: translateY(-6px); }
+  .brand-card::before { content: ''; position: absolute; inset: 0; opacity: .03; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+  .brand-dt { background: linear-gradient(145deg, var(--plum) 0%, #5A2A6A 100%); }
+  .brand-mb { background: linear-gradient(145deg, #1A3A2A 0%, #2D6040 100%); }
+  .brand-tag { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 20px; opacity: .65; }
+  .brand-dt .brand-tag, .brand-mb .brand-tag { color: var(--goldlt); }
+  .brand-card h3 { font-size: clamp(22px, 3vw, 30px); color: var(--white); margin-bottom: 16px; line-height: 1.25; }
+  .brand-card p { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.8; margin-bottom: 28px; }
+  .brand-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--goldlt); border-bottom: 1px solid rgba(184,146,42,.35);
+    padding-bottom: 4px; transition: gap .2s;
+  }
+  .brand-card:hover .brand-link { gap: 16px; }
+  .brand-icon { font-size: 48px; position: absolute; bottom: 32px; right: 36px; opacity: .18; }
+
+  /* ── BOOKS ── */
+  #books { padding: 110px 0; background: var(--cream); }
+  .books-intro { max-width: 600px; margin-bottom: 64px; }
+  .books-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .book-card {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .3s;
+  }
+  .book-card:hover { transform: translateY(-8px); }
+  .book-spine {
+    aspect-ratio: 2/3;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .book-card:nth-child(1) .book-spine { background: linear-gradient(160deg, var(--plum) 0%, #5A2070 100%); }
+  .book-card:nth-child(2) .book-spine { background: linear-gradient(160deg, #1A3A2A 0%, #2D5A40 100%); }
+  .book-card:nth-child(3) .book-spine { background: linear-gradient(160deg, #3A2010 0%, #6A4020 100%); }
+  .book-card:nth-child(4) .book-spine { background: linear-gradient(160deg, #102040 0%, #1A3A6A 100%); }
+  .book-spine::before {
+    content: '✦';
+    position: absolute; top: 24px; right: 20px;
+    font-size: 22px; color: rgba(255,255,255,.15);
+  }
+  .book-series { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--goldlt); margin-bottom: 12px; opacity: .8; }
+  .book-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--white); line-height: 1.3; margin-bottom: 10px; }
+  .book-sub { font-size: 11px; color: rgba(255,255,255,.5); line-height: 1.5; }
+  .book-badge {
+    position: absolute; top: 16px; left: 16px;
+    background: var(--gold); color: var(--plum);
+    font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+    padding: 5px 10px; border-radius: 2px; font-weight: 600;
+  }
+  .books-cta { margin-top: 48px; text-align: center; }
+
+  /* ── MOVING BEYOND APP ── */
+  #app { padding: 110px 0; background: var(--plum); }
+  .app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .app-label { color: var(--goldlt); }
+  .app-label::after { background: var(--goldlt); }
+  .app-head { color: var(--white); }
+  .app-body { font-size: 15px; color: rgba(255,255,255,.7); line-height: 1.9; margin-bottom: 32px; }
+  .app-features { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
+  .app-feature { display: flex; align-items: flex-start; gap: 14px; }
+  .app-feature-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .app-feature-text { font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.6; }
+  .app-feature-text strong { display: block; color: var(--goldlt); font-size: 13px; margin-bottom: 2px; }
+  .app-visual {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 16px; padding: 36px 28px;
+    text-align: center;
+  }
+  .app-phone-frame {
+    background: rgba(0,0,0,.3);
+    border-radius: 24px; padding: 28px 22px;
+    border: 1px solid rgba(255,255,255,.12);
+    max-width: 280px; margin: 0 auto 28px;
+  }
+  .app-screen-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); margin: 0 auto 20px; }
+  .app-screen-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--goldlt); margin-bottom: 8px; }
+  .app-screen-sub { font-size: 11px; color: rgba(255,255,255,.45); margin-bottom: 22px; }
+  .app-screen-areas { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .app-screen-area { background: rgba(255,255,255,.07); border: 1px solid rgba(184,146,42,.2); border-radius: 10px; padding: 12px 10px; font-size: 11px; color: rgba(255,255,255,.7); }
+  .app-screen-area .emoji { font-size: 18px; display: block; margin-bottom: 6px; }
+
+  /* ── MINISTRY ── */
+  #ministry { padding: 110px 0; }
+  .ministry-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; }
+  .ministry-verse {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3.5vw, 40px);
+    color: var(--plum); line-height: 1.4;
+    font-style: italic; margin-bottom: 20px;
+  }
+  .ministry-verse-ref { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); font-style: normal; font-family: 'Jost', sans-serif; }
+  .ministry-body p { font-size: 15px; line-height: 1.9; color: var(--ink); opacity: .8; margin-bottom: 20px; }
+  .ministry-services { display: flex; flex-direction: column; gap: 14px; }
+  .ministry-service {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 18px 20px;
+    border: 1px solid rgba(184,146,42,.2);
+    border-radius: 4px;
+    transition: border-color .2s, background .2s;
+  }
+  .ministry-service:hover { border-color: var(--gold); background: rgba(184,146,42,.04); }
+  .ministry-service-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .ministry-service-name { font-size: 14px; font-weight: 500; color: var(--plum); margin-bottom: 4px; }
+  .ministry-service-desc { font-size: 12px; color: var(--ink); opacity: .65; line-height: 1.6; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { padding: 110px 0; background: var(--mist); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+  .testimonial {
+    padding: 32px 28px;
+    background: var(--white);
+    border-radius: 6px;
+    border-top: 3px solid var(--gold);
+    position: relative;
+  }
+  .testimonial-quote { font-family: 'Cormorant Garamond', serif; font-size: 64px; color: var(--gold); opacity: .2; line-height: .8; margin-bottom: 16px; }
+  .testimonial-text { font-size: 14px; line-height: 1.85; color: var(--ink); opacity: .8; margin-bottom: 20px; font-style: italic; }
+  .testimonial-name { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--plum); font-weight: 500; }
+  .testimonial-role { font-size: 11px; color: var(--gold); margin-top: 3px; }
+
+  /* ── CONNECT ── */
+  #connect { padding: 110px 0; background: var(--plum); }
+  .connect-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .connect-label, .connect-head { color: var(--goldlt); }
+  .connect-head { color: var(--white); }
+  .connect-sub { font-size: 15px; color: rgba(255,255,255,.65); line-height: 1.85; margin-bottom: 36px; }
+  .connect-cards { display: flex; flex-direction: column; gap: 14px; }
+  .connect-card {
+    display: flex; align-items: center; gap: 18px;
+    padding: 18px 22px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background .25s, border-color .25s;
+  }
+  .connect-card:hover { background: rgba(255,255,255,.1); border-color: rgba(184,146,42,.4); }
+  .connect-card-icon { font-size: 22px; flex-shrink: 0; }
+  .connect-card-label { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--goldlt); margin-bottom: 3px; }
+  .connect-card-value { font-size: 14px; color: rgba(255,255,255,.85); }
+  .connect-form { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 8px; padding: 36px 32px; }
+  .connect-form h3 { font-size: 22px; color: var(--white); margin-bottom: 24px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--goldlt); margin-bottom: 8px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 4px;
+    padding: 12px 16px;
+    color: var(--white);
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-group select option { background: var(--plum); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .btn-form {
+    width: 100%; padding: 14px;
+    background: linear-gradient(135deg, var(--gold), var(--golddk));
+    border: none; border-radius: 4px; cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--plum); font-weight: 600;
+    transition: all .25s;
+    margin-top: 8px;
+  }
+  .btn-form:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(184,146,42,.35); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 60px 48px 40px;
+    background: #0E0818;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 60px;
+  }
+  .footer-brand h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--goldlt); margin-bottom: 12px; }
+  .footer-brand p { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.8; max-width: 280px; }
+  .footer-col h4 { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--goldlt); margin-bottom: 20px; }
+  .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; margin-bottom: 12px; transition: color .2s; }
+  .footer-col a:hover { color: var(--goldlt); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); margin-top: 48px; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; grid-column: 1/-1; }
+  .footer-bottom p { font-size: 11px; color: rgba(255,255,255,.3); }
+  .footer-verse { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: rgba(255,255,255,.35); }
+
+  /* ── PHOTO GALLERY ── */
+  #gallery { padding: 110px 0; background: var(--white); }
+  .gallery-intro { max-width: 560px; margin-bottom: 56px; }
+  .gallery-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; }
+  .gallery-tab {
+    font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+    padding: 9px 20px; border-radius: 2px; cursor: pointer;
+    border: 1px solid rgba(184,146,42,.25); color: var(--golddk);
+    background: transparent; font-family: 'Jost', sans-serif;
+    transition: all .22s;
+  }
+  .gallery-tab.active, .gallery-tab:hover { background: var(--plum); color: var(--goldlt); border-color: var(--plum); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .gallery-item {
+    position: relative; overflow: hidden;
+    border-radius: 4px; cursor: pointer;
+    background: var(--mist);
+    transition: transform .3s;
+  }
+  .gallery-item:hover { transform: scale(1.02); }
+  .gallery-item:nth-child(4n+1) { grid-column: span 2; }
+  .gallery-item img {
+    width: 100%; height: 100%; min-height: 220px;
+    object-fit: cover; display: block;
+    transition: transform .5s;
+  }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-item-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(61,26,74,.7) 0%, transparent 55%);
+    opacity: 0; transition: opacity .3s;
+    display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 20px;
+  }
+  .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+  .gallery-item-caption { font-size: 13px; color: var(--white); line-height: 1.4; }
+  .gallery-item-tag { font-size: 10px; color: var(--goldlt); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 4px; }
+  .gallery-item-delete {
+    position: absolute; top: 10px; right: 10px;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(0,0,0,.5); border: none; cursor: pointer;
+    color: white; font-size: 14px; display: none;
+    align-items: center; justify-content: center;
+    transition: background .2s; z-index: 2;
+  }
+  .gallery-item:hover .gallery-item-delete { display: flex; }
+  .gallery-item-delete:hover { background: rgba(180,50,50,.8); }
+  /* Placeholder card for empty slots */
+  .gallery-placeholder {
+    aspect-ratio: 4/3; min-height: 180px;
+    border: 2px dashed rgba(184,146,42,.25);
+    border-radius: 4px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px; color: rgba(184,146,42,.5);
+    font-size: 13px; letter-spacing: .04em;
+  }
+  .gallery-placeholder .ph-icon { font-size: 28px; opacity: .5; }
+
+  /* Upload zone */
+  .upload-zone {
+    border: 2px dashed rgba(184,146,42,.35);
+    border-radius: 8px;
+    padding: 52px 32px;
+    text-align: center;
+    cursor: pointer;
+    transition: all .28s;
+    background: rgba(184,146,42,.025);
+    position: relative;
+  }
+  .upload-zone:hover, .upload-zone.drag-over {
+    border-color: var(--gold);
+    background: rgba(184,146,42,.06);
+  }
+  .upload-zone input[type="file"] {
+    position: absolute; inset: 0; opacity: 0;
+    cursor: pointer; width: 100%; height: 100%;
+  }
+  .upload-icon { font-size: 42px; margin-bottom: 16px; }
+  .upload-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--plum); margin-bottom: 8px; }
+  .upload-sub { font-size: 13px; color: var(--ink); opacity: .55; line-height: 1.7; margin-bottom: 20px; }
+  .upload-btn-label {
+    display: inline-block;
+    border: 1px solid var(--gold); color: var(--gold);
+    padding: 11px 26px; border-radius: 2px;
+    font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+    pointer-events: none;
+  }
+  .upload-meta {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin-top: 20px; text-align: left;
+  }
+  .upload-meta input, .upload-meta select {
+    background: var(--cream); border: 1px solid rgba(184,146,42,.25);
+    border-radius: 4px; padding: 10px 14px;
+    font-family: 'Jost', sans-serif; font-size: 13px;
+    color: var(--ink); outline: none; width: 100%;
+    transition: border-color .2s;
+  }
+  .upload-meta input:focus, .upload-meta select:focus { border-color: var(--gold); }
+  .upload-meta select option { background: var(--white); }
+  .upload-progress {
+    height: 3px; background: rgba(184,146,42,.15);
+    border-radius: 2px; overflow: hidden;
+    margin-top: 16px; display: none;
+  }
+  .upload-progress-bar {
+    height: 100%; background: var(--gold);
+    width: 0%; transition: width .4s ease;
+    border-radius: 2px;
+  }
+  .upload-success {
+    display: none; margin-top: 14px;
+    font-size: 13px; color: var(--sage); letter-spacing: .06em;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(10,4,18,.92);
+    display: none; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-inner { position: relative; max-width: 900px; max-height: 90vh; width: 100%; }
+  .lightbox-inner img { width: 100%; max-height: 80vh; object-fit: contain; border-radius: 4px; }
+  .lightbox-caption { font-size: 14px; color: rgba(255,255,255,.6); text-align: center; margin-top: 14px; font-style: italic; }
+  .lightbox-close {
+    position: absolute; top: -44px; right: 0;
+    background: none; border: none; color: rgba(255,255,255,.6);
+    font-size: 28px; cursor: pointer; line-height: 1;
+    transition: color .2s;
+  }
+  .lightbox-close:hover { color: var(--goldlt); }
+  .lightbox-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(61,26,74,.7); border: 1px solid rgba(184,146,42,.3);
+    color: var(--goldlt); font-size: 22px; cursor: pointer;
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s;
+  }
+  .lightbox-nav:hover { background: var(--plum); }
+  .lightbox-prev { left: -56px; }
+  .lightbox-next { right: -56px; }
+  @media (max-width: 900px) {
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:nth-child(4n+1) { grid-column: span 1; }
+    .lightbox-prev { left: 8px; } .lightbox-next { right: 8px; }
+    .upload-meta { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── SPEAKING & MEDIA KIT ── */
+  #speaking { padding: 110px 0; background: var(--cream); }
+  .speaking-hero {
+    background: linear-gradient(145deg, var(--plum) 0%, #5A2070 100%);
+    border-radius: 8px; padding: 56px 48px;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 40px; align-items: center; margin-bottom: 64px;
+    position: relative; overflow: hidden;
+  }
+  .speaking-hero::before {
+    content: '✦'; position: absolute; right: 180px; top: 20px;
+    font-size: 120px; color: rgba(255,255,255,.04); line-height: 1;
+  }
+  .speaking-hero h2 { font-size: clamp(28px,4vw,44px); color: var(--white); margin-bottom: 14px; }
+  .speaking-hero p { font-size: 15px; color: rgba(255,255,255,.7); line-height: 1.85; max-width: 520px; margin-bottom: 28px; }
+  .speaking-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-white { background: var(--white); color: var(--plum); border: none; padding: 13px 28px; border-radius: 2px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; font-family: 'Jost',sans-serif; font-weight: 600; text-decoration: none; transition: all .25s; display: inline-block; }
+  .btn-white:hover { background: var(--goldlt); transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,.4); padding: 13px 28px; border-radius: 2px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; font-family: 'Jost',sans-serif; text-decoration: none; transition: all .25s; display: inline-block; }
+  .btn-ghost:hover { border-color: var(--goldlt); color: var(--goldlt); }
+  .speaking-badge-stack { display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
+  .speaking-badge { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); border-radius: 4px; padding: 14px 20px; text-align: center; }
+  .speaking-badge-num { font-family: 'Cormorant Garamond',serif; font-size: 32px; color: var(--goldlt); }
+  .speaking-badge-lbl { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: 3px; }
+
+  .speaking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 56px; }
+  .speaking-card { background: var(--white); border-radius: 6px; padding: 32px 28px; border-top: 3px solid var(--gold); }
+  .speaking-card-icon { font-size: 32px; margin-bottom: 16px; }
+  .speaking-card h3 { font-size: 20px; color: var(--plum); margin-bottom: 10px; }
+  .speaking-card p { font-size: 14px; color: var(--ink); opacity: .75; line-height: 1.8; margin-bottom: 16px; }
+  .speaking-topics { display: flex; flex-wrap: wrap; gap: 8px; }
+  .speaking-topic { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; border: 1px solid rgba(184,146,42,.3); color: var(--golddk); padding: 5px 12px; border-radius: 20px; }
+
+  .media-kit-box { background: var(--plum); border-radius: 8px; padding: 48px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .media-kit-box h3 { font-size: 28px; color: var(--white); margin-bottom: 12px; }
+  .media-kit-box p { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.85; margin-bottom: 24px; }
+  .kit-items { display: flex; flex-direction: column; gap: 12px; }
+  .kit-item { display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 4px; cursor: pointer; transition: all .2s; text-decoration: none; }
+  .kit-item:hover { background: rgba(255,255,255,.12); border-color: rgba(184,146,42,.4); }
+  .kit-item-icon { font-size: 20px; flex-shrink: 0; }
+  .kit-item-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--goldlt); margin-bottom: 2px; }
+  .kit-item-name { font-size: 13px; color: rgba(255,255,255,.8); }
+  .testimonial-speaking { background: rgba(255,255,255,.06); border-left: 3px solid var(--gold); padding: 24px; border-radius: 0 4px 4px 0; }
+  .testimonial-speaking p { font-family: 'Cormorant Garamond',serif; font-size: 20px; color: var(--white); font-style: italic; line-height: 1.65; margin-bottom: 14px; }
+  .testimonial-speaking cite { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--goldlt); }
+
+  @media(max-width:900px){ .speaking-hero{grid-template-columns:1fr;} .speaking-badge-stack{flex-direction:row;} .speaking-grid{grid-template-columns:1fr;} .media-kit-box{grid-template-columns:1fr;gap:32px;} }
+
+  /* ── BLOG ── */
+  #blog { padding: 110px 0; background: var(--white); }
+  .blog-featured {
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    gap: 48px; margin-bottom: 56px; align-items: stretch;
+  }
+  .blog-featured-card {
+    background: linear-gradient(160deg, var(--plum) 0%, #2A1040 100%);
+    border-radius: 8px; padding: 48px 40px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    min-height: 380px; position: relative; overflow: hidden;
+    cursor: pointer; transition: transform .3s;
+  }
+  .blog-featured-card:hover { transform: translateY(-4px); }
+  .blog-featured-card::before { content: '✦'; position: absolute; top: 28px; right: 28px; font-size: 48px; color: rgba(255,255,255,.06); }
+  .blog-featured-eyebrow { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--goldlt); margin-bottom: 14px; }
+  .blog-featured-title { font-family: 'Cormorant Garamond',serif; font-size: clamp(22px,3vw,32px); color: var(--white); line-height: 1.3; margin-bottom: 14px; }
+  .blog-featured-excerpt { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.8; margin-bottom: 24px; }
+  .blog-featured-meta { display: flex; gap: 20px; align-items: center; }
+  .blog-date { font-size: 11px; color: rgba(255,255,255,.4); letter-spacing: .08em; }
+  .blog-read { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--goldlt); border-bottom: 1px solid rgba(184,146,42,.4); padding-bottom: 2px; }
+  .blog-sidebar { display: flex; flex-direction: column; gap: 20px; }
+  .blog-side-card { background: var(--cream); border-radius: 6px; padding: 24px 22px; cursor: pointer; transition: all .25s; border-left: 3px solid transparent; }
+  .blog-side-card:hover { border-left-color: var(--gold); background: var(--mist); transform: translateX(4px); }
+  .blog-side-cat { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .blog-side-title { font-family: 'Cormorant Garamond',serif; font-size: 18px; color: var(--plum); line-height: 1.35; margin-bottom: 8px; }
+  .blog-side-date { font-size: 11px; color: var(--ink); opacity: .45; }
+
+  .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 48px; }
+  .blog-card { border-radius: 6px; overflow: hidden; cursor: pointer; transition: transform .28s; background: var(--cream); }
+  .blog-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(61,26,74,.1); }
+  .blog-card-top { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 48px; }
+  .blog-card:nth-child(1) .blog-card-top { background: linear-gradient(135deg,#2A1535,#4A2060); }
+  .blog-card:nth-child(2) .blog-card-top { background: linear-gradient(135deg,#1A3020,#2D5A40); }
+  .blog-card:nth-child(3) .blog-card-top { background: linear-gradient(135deg,#30200A,#5A3A10); }
+  .blog-card-body { padding: 22px 20px; }
+  .blog-card-cat { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .blog-card-title { font-family: 'Cormorant Garamond',serif; font-size: 20px; color: var(--plum); line-height: 1.35; margin-bottom: 10px; }
+  .blog-card-excerpt { font-size: 13px; color: var(--ink); opacity: .7; line-height: 1.75; margin-bottom: 14px; }
+  .blog-card-date { font-size: 11px; color: var(--ink); opacity: .4; }
+
+  /* Write post form */
+  .blog-write { background: var(--plum); border-radius: 8px; padding: 40px 36px; }
+  .blog-write h3 { font-size: 26px; color: var(--white); margin-bottom: 8px; }
+  .blog-write p { font-size: 14px; color: rgba(255,255,255,.55); margin-bottom: 28px; }
+  .blog-form { display: flex; flex-direction: column; gap: 14px; }
+  .blog-input { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 4px; padding: 13px 16px; color: var(--white); font-family: 'Jost',sans-serif; font-size: 14px; outline: none; transition: border-color .2s; }
+  .blog-input:focus { border-color: var(--gold); }
+  .blog-input::placeholder { color: rgba(255,255,255,.3); }
+  .blog-textarea { min-height: 160px; resize: vertical; }
+  .blog-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .blog-form select.blog-input option { background: var(--plum); }
+  .blog-posts-list { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+  .blog-post-item { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 4px; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .blog-post-item-title { font-size: 14px; color: rgba(255,255,255,.85); }
+  .blog-post-item-meta { font-size: 11px; color: rgba(255,255,255,.35); margin-top: 3px; }
+  .blog-post-delete { background: none; border: none; color: rgba(255,255,255,.3); cursor: pointer; font-size: 18px; transition: color .2s; }
+  .blog-post-delete:hover { color: #C47B7B; }
+
+  /* Blog modal */
+  .blog-modal { position: fixed; inset: 0; z-index: 998; background: rgba(10,4,18,.92); display: none; overflow-y: auto; padding: 60px 24px; }
+  .blog-modal.open { display: block; }
+  .blog-modal-inner { max-width: 720px; margin: 0 auto; background: var(--white); border-radius: 8px; overflow: hidden; }
+  .blog-modal-hero { padding: 56px 48px 40px; background: linear-gradient(160deg,var(--plum),#2A1040); }
+  .blog-modal-cat { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--goldlt); margin-bottom: 14px; }
+  .blog-modal-title { font-family: 'Cormorant Garamond',serif; font-size: clamp(28px,4vw,42px); color: var(--white); line-height: 1.25; margin-bottom: 16px; }
+  .blog-modal-date { font-size: 12px; color: rgba(255,255,255,.45); }
+  .blog-modal-body { padding: 44px 48px; }
+  .blog-modal-body p { font-size: 16px; line-height: 2; color: var(--ink); opacity: .82; margin-bottom: 22px; }
+  .blog-modal-verse { font-family: 'Cormorant Garamond',serif; font-size: 20px; font-style: italic; color: var(--plum); border-left: 3px solid var(--gold); padding-left: 20px; margin: 32px 0; line-height: 1.7; }
+  .blog-modal-close { position: fixed; top: 24px; right: 32px; background: rgba(255,255,255,.1); border: none; color: var(--white); font-size: 28px; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+  .blog-modal-close:hover { background: rgba(255,255,255,.2); }
+
+  @media(max-width:900px){ .blog-featured{grid-template-columns:1fr;} .blog-grid{grid-template-columns:1fr 1fr;} .blog-form-row{grid-template-columns:1fr;} .blog-modal-hero,.blog-modal-body{padding:32px 24px;} }
+  @media(max-width:480px){ .blog-grid{grid-template-columns:1fr;} }
+
+  /* ── EVENTS ── */
+  #events { padding: 110px 0; background: var(--mist); }
+  .events-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+  .events-list { display: flex; flex-direction: column; gap: 20px; }
+  .event-card {
+    background: var(--white); border-radius: 6px;
+    display: grid; grid-template-columns: auto 1fr auto;
+    gap: 0; overflow: hidden; transition: transform .28s, box-shadow .28s;
+    cursor: pointer;
+  }
+  .event-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(61,26,74,.1); }
+  .event-date-block {
+    background: var(--plum); padding: 24px 20px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-width: 88px;
+  }
+  .event-month { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--goldlt); margin-bottom: 4px; }
+  .event-day { font-family: 'Cormorant Garamond',serif; font-size: 40px; color: var(--white); line-height: 1; }
+  .event-year { font-size: 10px; color: rgba(255,255,255,.4); margin-top: 4px; }
+  .event-body { padding: 22px 24px; }
+  .event-type { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .event-title { font-family: 'Cormorant Garamond',serif; font-size: 20px; color: var(--plum); margin-bottom: 8px; line-height: 1.3; }
+  .event-details { display: flex; flex-wrap: wrap; gap: 14px; }
+  .event-detail { font-size: 12px; color: var(--ink); opacity: .6; display: flex; align-items: center; gap: 5px; }
+  .event-action { padding: 22px 20px; display: flex; align-items: center; }
+  .event-rsvp { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; border: 1px solid var(--gold); color: var(--gold); padding: 10px 18px; border-radius: 2px; cursor: pointer; background: none; font-family: 'Jost',sans-serif; transition: all .22s; white-space: nowrap; }
+  .event-rsvp:hover, .event-rsvp.rsvped { background: var(--gold); color: var(--white); }
+  .event-card.past { opacity: .55; }
+  .event-card.past .event-date-block { background: var(--ink); }
+  .event-card.featured { border: 2px solid var(--gold); }
+  .event-card.featured .event-date-block { background: linear-gradient(160deg, var(--gold), var(--golddk)); }
+
+  /* Add event form */
+  .add-event-box { background: var(--white); border-radius: 8px; padding: 32px 28px; position: sticky; top: 120px; }
+  .add-event-box h3 { font-size: 22px; color: var(--plum); margin-bottom: 8px; }
+  .add-event-box p { font-size: 13px; color: var(--ink); opacity: .6; margin-bottom: 22px; line-height: 1.6; }
+  .event-form { display: flex; flex-direction: column; gap: 12px; }
+  .event-input { background: var(--cream); border: 1px solid rgba(184,146,42,.25); border-radius: 4px; padding: 11px 14px; font-family: 'Jost',sans-serif; font-size: 13px; color: var(--ink); outline: none; width: 100%; transition: border-color .2s; }
+  .event-input:focus { border-color: var(--gold); }
+  .event-input::placeholder { color: rgba(26,15,34,.35); }
+  .event-input option { background: var(--white); }
+  .calendar-strip { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; margin-bottom: 6px; }
+  .cal-day-label { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); opacity: .4; text-align: center; padding: 4px 0; }
+  .cal-day { height: 32px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink); opacity: .6; cursor: default; }
+  .cal-day.has-event { background: rgba(184,146,42,.15); color: var(--golddk); font-weight: 600; cursor: pointer; }
+  .cal-day.has-event:hover { background: var(--gold); color: var(--white); opacity: 1; }
+  .cal-day.today { border: 1px solid var(--gold); opacity: 1; }
+  .cal-month-label { font-size: 13px; color: var(--plum); font-family: 'Cormorant Garamond',serif; margin-bottom: 10px; }
+
+  @media(max-width:900px){ .events-layout{grid-template-columns:1fr;} .add-event-box{position:static;} .event-card{grid-template-columns:auto 1fr;} .event-action{display:none;} }
+  @media(max-width:480px){ .event-card{grid-template-columns:1fr;} .event-date-block{flex-direction:row;gap:8px;padding:16px 20px;min-width:unset;} }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: .1s; }
+  .reveal-delay-2 { transition-delay: .2s; }
+  .reveal-delay-3 { transition-delay: .3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; text-align: center; }
+    .hero-eyebrow { justify-content: center; }
+    .hero-verse { margin: 0 auto 36px; }
+    .hero-btns { justify-content: center; }
+    .hero-visual { display: none; }
+    .about-grid, .brands-grid, .app-grid, .ministry-grid, .connect-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-left { position: static; }
+    .books-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 24px; }
+    .hero-stat-strip { display: none; }
+    footer { grid-template-columns: 1fr; gap: 36px; padding: 48px 24px 32px; }
+  }
+  @media (max-width: 480px) {
+    .books-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.3); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Boladale <span>Gold</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#brands">My Work</a></li>
+    <li><a href="#books">Books</a></li>
+    <li><a href="#ministry">Ministry</a></li>
+    <li><a href="#app">Healing App</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#speaking">Speaking</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+  <a href="#connect" class="nav-cta">Book a Session</a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#brands" onclick="toggleMenu()">My Work</a>
+  <a href="#books" onclick="toggleMenu()">Books</a>
+  <a href="#ministry" onclick="toggleMenu()">Ministry</a>
+  <a href="#app" onclick="toggleMenu()">Healing App</a>
+  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+  <a href="#speaking" onclick="toggleMenu()">Speaking</a>
+  <a href="#blog" onclick="toggleMenu()">Blog</a>
+  <a href="#events" onclick="toggleMenu()">Events</a>
+  <a href="#connect" onclick="toggleMenu()">Connect</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Clinician · Prophetess · Author</div>
+    <h1 class="hero-name">Boladale<br/><em>Gold</em></h1>
+    <p class="hero-title serif">Licensed Clinician · Prophetic Voice · Healing Ministry Leader</p>
+    <blockquote class="hero-verse">
+      "For God has not given us a spirit of fear, but of power and of love and of a sound mind."
+      <small>2 Timothy 1:7</small>
+    </blockquote>
+    <div class="hero-btns">
+      <a href="#connect" class="btn-primary">Book a Session</a>
+      <a href="#about" class="btn-secondary">My Story</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-portrait-frame">
+      <div class="hero-portrait-bg"></div>
+      <div class="hero-portrait-accent"></div>
+      <div class="hero-portrait-accent2"></div>
+      <div class="hero-portrait-inner">
+        <div class="portrait-initials">BG</div>
+        <div class="portrait-name-card serif">Prophetess Boladale Gold-Okelanfaa</div>
+        <p style="font-size:12px;color:#6B8C74;margin:6px 0 0;letter-spacing:.05em;">LCPC · Author · Ministry Leader</p>
+        <div class="portrait-tags">
+          <span class="portrait-tag">Maryland</span>
+          <span class="portrait-tag">Virtual Available</span>
+          <span class="portrait-tag">Faith-Based</span>
+        </div>
+      </div>
+      <div class="hero-stat-strip">
+        <div class="hero-stat">
+          <div class="hero-stat-num serif">14+</div>
+          <div class="hero-stat-lbl">Years of Practice</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num serif">4</div>
+          <div class="hero-stat-lbl">Published Books</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num serif">∞</div>
+          <div class="hero-stat-lbl">Lives Touched</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IDENTITY MARQUEE -->
+<div class="identity-strip">
+  <div class="identity-scroll">
+    <div class="identity-item active">Clinician <span class="identity-dot"></span></div>
+    <div class="identity-item">Prophetess <span class="identity-dot"></span></div>
+    <div class="identity-item active">Author <span class="identity-dot"></span></div>
+    <div class="identity-item">Healing Ministry Leader <span class="identity-dot"></span></div>
+    <div class="identity-item active">Trauma-Informed Therapist <span class="identity-dot"></span></div>
+    <div class="identity-item">Speaker <span class="identity-dot"></span></div>
+    <div class="identity-item active">Coach <span class="identity-dot"></span></div>
+    <div class="identity-item">Faith-Based Counselor <span class="identity-dot"></span></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="identity-item active">Clinician <span class="identity-dot"></span></div>
+    <div class="identity-item">Prophetess <span class="identity-dot"></span></div>
+    <div class="identity-item active">Author <span class="identity-dot"></span></div>
+    <div class="identity-item">Healing Ministry Leader <span class="identity-dot"></span></div>
+    <div class="identity-item active">Trauma-Informed Therapist <span class="identity-dot"></span></div>
+    <div class="identity-item">Speaker <span class="identity-dot"></span></div>
+    <div class="identity-item active">Coach <span class="identity-dot"></span></div>
+    <div class="identity-item">Faith-Based Counselor <span class="identity-dot"></span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <div class="section-label">About Boladale</div>
+        <p class="about-pull serif">
+          "Untreated pain in a parent <strong>feeds and sustains</strong> pain in a child. Healing one life ripples into generations."
+        </p>
+        <div class="about-badges">
+          <div class="about-badge">
+            <div class="about-badge-icon">🎓</div>
+            <div class="about-badge-text"><strong>Credentials</strong>LCPC — Licensed Clinical Professional Counselor</div>
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-icon">🏥</div>
+            <div class="about-badge-text"><strong>Practice</strong>Divine Touch Therapeutic Counseling & Mentoring Services, LLC</div>
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-icon">🙏</div>
+            <div class="about-badge-text"><strong>Ministry</strong>Moving Beyond My Brokenness International (MBMB)</div>
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-icon">📍</div>
+            <div class="about-badge-text"><strong>Location</strong>Glen Burnie, MD · In-Person & Virtual · 14+ Years Experience</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-body reveal reveal-delay-2">
+        <div class="section-head">Where Clinical Expertise Meets Prophetic Calling</div>
+        <p>
+          Boladale Gold-Okelanfaa is a licensed clinician, prophetic voice, author, and healing ministry leader whose life's work sits at the sacred intersection of psychology and faith. Her journey began in 2009 at Adventist Behavioral Health, working with juveniles in residential care — where she first witnessed the truth that would define her entire career: <em>untreated parental pain does not stay with the parent.</em>
+        </p>
+        <p>
+          Completing her master's in counseling psychology while immersed in direct client care, Boladale developed a rare integration of clinical precision and spiritual authority. She saw mothers who believed God was punishing them through their children's pain — and she learned to redirect shame into love, breaking cycles that had run for generations.
+        </p>
+        <p>
+          Today, operating as <em>Prophetess Boladale Gold-Okelanfaa</em>, she serves individuals across trauma, mood, anxiety, relationships, and occupational stress — through her private practice, her international healing ministry, her four-book Amazon series, and the Moving Beyond healing platform. Her approach is eclectic, somatic, bilateral, and uncompromisingly faith-grounded.
+        </p>
+        <p>
+          The people of God cannot thrive when they cannot move beyond what broke them. That conviction is the heartbeat of everything she does.
+        </p>
+        <a href="#connect" class="btn-primary" style="display:inline-block;margin-top:12px;">Work With Boladale →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands">
+  <div class="container">
+    <div class="section-label reveal">Two Callings. One Mission.</div>
+    <div class="section-head reveal" style="max-width:560px;">The platforms through which healing moves</div>
+    <div class="brands-grid">
+      <a href="https://www.divinetouchcounselingcenter.com" target="_blank" class="brand-card brand-dt reveal">
+        <div class="brand-icon">🕊️</div>
+        <div class="brand-tag">Clinical Practice · Est. 2009</div>
+        <h3 class="serif">Divine Touch Therapeutic Counseling & Mentoring Services, LLC</h3>
+        <p>Evidence-based, faith-integrated therapy for children, teens, and adults in Maryland — in-person and virtual. Accepting Medicaid, BCBS, Cigna & private pay.</p>
+        <span class="brand-link">Visit Practice →</span>
+      </a>
+      <a href="#app" class="brand-card brand-mb reveal reveal-delay-2">
+        <div class="brand-icon">🌿</div>
+        <div class="brand-tag">Healing Ministry · International</div>
+        <h3 class="serif">Moving Beyond My Brokenness International</h3>
+        <p>A global faith-based healing ministry through livestreams, teaching, and the Moving Beyond AI healing companion — reaching souls wherever they are in their journey.</p>
+        <span class="brand-link">Explore Ministry →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKS -->
+<section id="books">
+  <div class="container">
+    <div class="books-intro reveal">
+      <div class="section-label">Anchoring the Storm Series</div>
+      <div class="section-head">Words that reach where hands cannot</div>
+      <p style="font-size:15px;color:var(--ink);opacity:.75;line-height:1.85;">A four-book Amazon series born from lived experience, clinical wisdom, and prophetic insight — each volume a companion for those walking through the darkest seasons of their lives.</p>
+    </div>
+    <div class="books-grid">
+      <div class="book-card reveal">
+        <div class="book-spine">
+          <div class="book-badge">Book 1</div>
+          <div class="book-series">Anchoring the Storm</div>
+          <div class="book-title serif">Anchoring the Storm</div>
+          <div class="book-sub">Finding your hold when everything is shaking</div>
+        </div>
+      </div>
+      <div class="book-card reveal reveal-delay-1">
+        <div class="book-spine">
+          <div class="book-badge">Book 2</div>
+          <div class="book-series">Anchoring the Storm</div>
+          <div class="book-title serif">Healing the Broken Places</div>
+          <div class="book-sub">Restoration after trauma and loss</div>
+        </div>
+      </div>
+      <div class="book-card reveal reveal-delay-2">
+        <div class="book-spine">
+          <div class="book-badge">Book 3</div>
+          <div class="book-series">Anchoring the Storm</div>
+          <div class="book-title serif">Moving Beyond the Pain</div>
+          <div class="book-sub">The journey from surviving to thriving</div>
+        </div>
+      </div>
+      <div class="book-card reveal reveal-delay-3">
+        <div class="book-spine">
+          <div class="book-badge">Book 4</div>
+          <div class="book-series">Anchoring the Storm</div>
+          <div class="book-title serif">Becoming Whole</div>
+          <div class="book-sub">Living the abundant life you were created for</div>
+        </div>
+      </div>
+    </div>
+    <div class="books-cta reveal">
+      <a href="https://www.amazon.com" target="_blank" class="btn-primary">Find on Amazon →</a>
+    </div>
+  </div>
+</section>
+
+<!-- MOVING BEYOND APP -->
+<section id="app">
+  <div class="container">
+    <div class="app-grid">
+      <div class="reveal">
+        <div class="section-label app-label">Moving Beyond · Healing Companion</div>
+        <div class="section-head app-head serif">A sacred space in your pocket — available 24/7</div>
+        <p class="app-body">The Moving Beyond AI healing companion is a faith-based, psychologically grounded digital platform that meets people wherever they are — with personalized guidance, prayer, scripture, and step-by-step healing support powered by Boladale's clinical expertise.</p>
+        <div class="app-features">
+          <div class="app-feature">
+            <div class="app-feature-icon">🧭</div>
+            <div class="app-feature-text"><strong>Soul Assessment</strong>Personalized AI healing reports across emotional wellness, relationships, life purpose, and trauma recovery</div>
+          </div>
+          <div class="app-feature">
+            <div class="app-feature-icon">📖</div>
+            <div class="app-feature-text"><strong>Prayer Journal</strong>Private sacred space with mood tracking, AI-generated prompts, and healing history</div>
+          </div>
+          <div class="app-feature">
+            <div class="app-feature-icon">🌿</div>
+            <div class="app-feature-text"><strong>Daily Devotional</strong>Faith-filled encouragement for every day of the week</div>
+          </div>
+          <div class="app-feature">
+            <div class="app-feature-icon">📚</div>
+            <div class="app-feature-text"><strong>Resource Library</strong>Workbooks, guides, and devotionals crafted by Divine Touch</div>
+          </div>
+        </div>
+        <a href="#connect" class="btn-secondary" style="display:inline-block;">Access the App →</a>
+      </div>
+      <div class="app-visual reveal reveal-delay-2">
+        <div class="app-phone-frame">
+          <div class="app-screen-dot"></div>
+          <div class="app-screen-title serif">Moving Beyond</div>
+          <div class="app-screen-sub">Your Healing Companion</div>
+          <div class="app-screen-areas">
+            <div class="app-screen-area"><span class="emoji">🕊️</span>Emotional Wellness</div>
+            <div class="app-screen-area"><span class="emoji">🤝</span>Relationships</div>
+            <div class="app-screen-area"><span class="emoji">✨</span>Life Purpose</div>
+            <div class="app-screen-area"><span class="emoji">🌱</span>Healing Journey</div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:rgba(255,255,255,.4);letter-spacing:.12em;text-transform:uppercase;">Free to start · Premium plans available</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MINISTRY -->
+<section id="ministry">
+  <div class="container">
+    <div class="ministry-grid">
+      <div class="reveal">
+        <div class="section-label">Services Offered</div>
+        <div class="section-head">Where clinical care meets prophetic purpose</div>
+        <blockquote class="ministry-verse serif">
+          "He heals the brokenhearted and binds up their wounds."
+          <div class="ministry-verse-ref">— Psalm 147:3</div>
+        </blockquote>
+        <div class="ministry-body">
+          <p>Whether you come through the clinical door of Divine Touch or the spiritual door of Moving Beyond My Brokenness International, you will find the same heart — one that believes healing is not only possible for you, it is your inheritance.</p>
+          <p>Boladale serves children, teens, adults, couples, and families — in-person in Glen Burnie, Maryland, and virtually throughout the state.</p>
+        </div>
+        <a href="#connect" class="btn-primary" style="display:inline-block;margin-top:16px;">Schedule a Session</a>
+      </div>
+      <div class="ministry-services reveal reveal-delay-2">
+        <div class="ministry-service">
+          <div class="ministry-service-icon">🕊️</div>
+          <div><div class="ministry-service-name">Individual Therapy</div><div class="ministry-service-desc">Trauma, mood disorders, anxiety, depression, life transitions, and occupational stressors</div></div>
+        </div>
+        <div class="ministry-service">
+          <div class="ministry-service-icon">💞</div>
+          <div><div class="ministry-service-name">Couples Counseling</div><div class="ministry-service-desc">Restoring connection, rebuilding trust, and deepening intimacy</div></div>
+        </div>
+        <div class="ministry-service">
+          <div class="ministry-service-icon">👧</div>
+          <div><div class="ministry-service-name">Child & Adolescent Therapy</div><div class="ministry-service-desc">Compassionate care for young people navigating emotional and behavioral challenges</div></div>
+        </div>
+        <div class="ministry-service">
+          <div class="ministry-service-icon">🌿</div>
+          <div><div class="ministry-service-name">Group Therapy & Support</div><div class="ministry-service-desc">Healing in community — women's groups, grief support, and more</div></div>
+        </div>
+        <div class="ministry-service">
+          <div class="ministry-service-icon">✨</div>
+          <div><div class="ministry-service-name">Faith-Based Mentoring</div><div class="ministry-service-desc">Prophetically grounded coaching for personal and professional breakthrough</div></div>
+        </div>
+        <div class="ministry-service">
+          <div class="ministry-service-icon">🎤</div>
+          <div><div class="ministry-service-name">Speaking & Workshops</div><div class="ministry-service-desc">Moving Beyond My Brokenness events, keynotes, and immersive healing experiences</div></div>
+        </div>
+        <div style="padding:14px 0;font-size:13px;color:var(--sage);">✓ Accepting: Medicaid · BCBS · Cigna · Out-of-Pocket</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-label reveal">Client Voices</div>
+    <div class="section-head reveal">Healing that speaks for itself</div>
+    <div class="testimonials-grid">
+      <div class="testimonial reveal">
+        <div class="testimonial-quote serif">"</div>
+        <p class="testimonial-text">Prophetess Boladale has a rare gift — she sees you clinically and spiritually at the same time. She helped me understand that my anxiety wasn't a character flaw; it was a wound that needed tending. My whole family has shifted because I shifted.</p>
+        <div class="testimonial-name">M.J.</div>
+        <div class="testimonial-role">Individual Therapy Client</div>
+      </div>
+      <div class="testimonial reveal reveal-delay-1">
+        <div class="testimonial-quote serif">"</div>
+        <p class="testimonial-text">I came in broken after my marriage fell apart. What I found was not just a therapist — I found a prophetic guide who held my pain with both clinical tools and the Word of God. I left whole.</p>
+        <div class="testimonial-name">T.R.</div>
+        <div class="testimonial-role">Couples Counseling Client</div>
+      </div>
+      <div class="testimonial reveal reveal-delay-2">
+        <div class="testimonial-quote serif">"</div>
+        <p class="testimonial-text">The Moving Beyond app met me at 2am when I had no one to call. The personalized prayer it wrote for me — I printed it out and read it every morning. It led me to finally book a session with Divine Touch.</p>
+        <div class="testimonial-name">D.W.</div>
+        <div class="testimonial-role">Moving Beyond App Member</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-intro reveal">
+      <div class="section-label">Photo Gallery</div>
+      <div class="section-head">Moments of ministry, healing & impact</div>
+      <p style="font-size:15px;color:var(--ink);opacity:.72;line-height:1.85;">A glimpse into the life and work of Prophetess Boladale Gold-Okelanfaa — from the counseling room to the ministry stage, from author events to community outreach.</p>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="gallery-tabs reveal">
+      <button class="gallery-tab active" onclick="filterGallery('all',this)">All</button>
+      <button class="gallery-tab" onclick="filterGallery('ministry',this)">Ministry</button>
+      <button class="gallery-tab" onclick="filterGallery('speaking',this)">Speaking</button>
+      <button class="gallery-tab" onclick="filterGallery('books',this)">Books & Media</button>
+      <button class="gallery-tab" onclick="filterGallery('personal',this)">Personal</button>
+      <button class="gallery-tab" onclick="filterGallery('community',this)">Community</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Placeholder cards shown before any photos are uploaded -->
+      <div class="gallery-placeholder" data-category="all" style="aspect-ratio:8/5;min-height:220px;">
+        <div class="ph-icon">🕊️</div>
+        <span>Ministry photos will appear here</span>
+      </div>
+      <div class="gallery-placeholder" data-category="all">
+        <div class="ph-icon">✨</div>
+        <span>Speaking moments</span>
+      </div>
+      <div class="gallery-placeholder" data-category="all">
+        <div class="ph-icon">📖</div>
+        <span>Books & media</span>
+      </div>
+      <div class="gallery-placeholder" data-category="all" style="aspect-ratio:8/5;min-height:220px;">
+        <div class="ph-icon">🌿</div>
+        <span>Community impact</span>
+      </div>
+      <div class="gallery-placeholder" data-category="all">
+        <div class="ph-icon">💞</div>
+        <span>Personal moments</span>
+      </div>
+      <div class="gallery-placeholder" data-category="all">
+        <div class="ph-icon">🙏</div>
+        <span>Healing ministry</span>
+      </div>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="reveal" style="margin-top:16px;">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+        <div style="flex:1;height:1px;background:rgba(184,146,42,.2);"></div>
+        <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--golddk);">Upload Your Photos</span>
+        <div style="flex:1;height:1px;background:rgba(184,146,42,.2);"></div>
+      </div>
+
+      <div class="upload-zone" id="uploadZone">
+        <input type="file" id="photoInput" accept="image/*" multiple onchange="handleFiles(this.files)"/>
+        <div class="upload-icon">📸</div>
+        <div class="upload-title serif">Add Your Photos</div>
+        <p class="upload-sub">Drag & drop your photos here, or click to browse.<br/>Supports JPG, PNG, WEBP · Multiple files welcome</p>
+        <span class="upload-btn-label">Choose Photos</span>
+      </div>
+
+      <!-- Photo metadata form (shown after file selected) -->
+      <div id="uploadForm" style="display:none;margin-top:20px;">
+        <div style="background:var(--cream);border:1px solid rgba(184,146,42,.2);border-radius:8px;padding:28px;">
+          <p style="font-size:13px;color:var(--ink);opacity:.7;margin-bottom:18px;">Add a caption and category for your photo(s):</p>
+          <div class="upload-meta">
+            <input type="text" id="photoCaption" placeholder="Caption (e.g. 'Speaking at MBMB Conference 2025')"/>
+            <select id="photoCategory">
+              <option value="ministry">Ministry</option>
+              <option value="speaking">Speaking</option>
+              <option value="books">Books & Media</option>
+              <option value="personal">Personal</option>
+              <option value="community">Community</option>
+            </select>
+          </div>
+          <div class="upload-progress" id="uploadProgress">
+            <div class="upload-progress-bar" id="progressBar"></div>
+          </div>
+          <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;">
+            <button onclick="processUpload()" class="btn-primary" style="border:none;cursor:pointer;font-family:'Jost',sans-serif;">Add to Gallery ✦</button>
+            <button onclick="cancelUpload()" class="btn-secondary" style="cursor:pointer;font-family:'Jost',sans-serif;background:none;">Cancel</button>
+          </div>
+          <div class="upload-success" id="uploadSuccess">✓ Photo added to your gallery successfully!</div>
+        </div>
+      </div>
+
+      <p style="font-size:12px;color:var(--ink);opacity:.45;text-align:center;margin-top:16px;line-height:1.7;">
+        Photos are stored in your browser session. For permanent hosting, a developer can connect this to your Wix site or a cloud storage service.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightboxBtn()">×</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">‹</button>
+    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</button>
+    <img id="lightboxImg" src="" alt=""/>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SPEAKING & MEDIA KIT -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section id="speaking">
+  <div class="container">
+    <div class="section-label reveal">Speaking & Media Kit</div>
+
+    <!-- Hero Banner -->
+    <div class="speaking-hero reveal">
+      <div>
+        <h2 class="serif">Invite Prophetess Boladale to Speak</h2>
+        <p>With 14+ years of clinical expertise, prophetic authority, and a gift for translating complex psychological truths into accessible, faith-grounded wisdom — Boladale brings transformation to every stage she stands on.</p>
+        <div class="speaking-hero-btns">
+          <a href="#connect" class="btn-white">Book Boladale to Speak</a>
+          <a href="mailto:admin@dttcams.com?subject=Speaking%20Inquiry" class="btn-ghost">Email Speaking Team</a>
+        </div>
+      </div>
+      <div class="speaking-badge-stack">
+        <div class="speaking-badge">
+          <div class="speaking-badge-num serif">14+</div>
+          <div class="speaking-badge-lbl">Years Speaking</div>
+        </div>
+        <div class="speaking-badge">
+          <div class="speaking-badge-num serif">4</div>
+          <div class="speaking-badge-lbl">Published Books</div>
+        </div>
+        <div class="speaking-badge">
+          <div class="speaking-badge-num serif">🌍</div>
+          <div class="speaking-badge-lbl">International</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Speaking Topics Grid -->
+    <div class="section-label reveal">Signature Topics</div>
+    <div class="speaking-grid reveal">
+      <div class="speaking-card">
+        <div class="speaking-card-icon">🌱</div>
+        <h3 class="serif">Moving Beyond My Brokenness</h3>
+        <p>The signature keynote — a powerful exploration of how unhealed trauma keeps individuals and entire families stuck, and the prophetic, psychological roadmap to moving forward.</p>
+        <div class="speaking-topics">
+          <span class="speaking-topic">Trauma Recovery</span>
+          <span class="speaking-topic">Generational Healing</span>
+          <span class="speaking-topic">Faith & Psychology</span>
+        </div>
+      </div>
+      <div class="speaking-card">
+        <div class="speaking-card-icon">🧠</div>
+        <h3 class="serif">A Sound Mind in a Broken World</h3>
+        <p>Rooted in 2 Timothy 1:7, this talk addresses mental health stigma in faith communities — creating a bridge between the church and clinical care that saves lives.</p>
+        <div class="speaking-topics">
+          <span class="speaking-topic">Mental Health</span>
+          <span class="speaking-topic">Church Communities</span>
+          <span class="speaking-topic">Stigma Reduction</span>
+        </div>
+      </div>
+      <div class="speaking-card">
+        <div class="speaking-card-icon">👨‍👩‍👧</div>
+        <h3 class="serif">Breaking the Cycle: Parenting from Wholeness</h3>
+        <p>Boladale's most clinically grounded talk — exploring how untreated parental anxiety and depression feeds and sustains the same in children, and how healing one generation changes all that follow.</p>
+        <div class="speaking-topics">
+          <span class="speaking-topic">Parenting</span>
+          <span class="speaking-topic">Intergenerational Trauma</span>
+          <span class="speaking-topic">Child Wellness</span>
+        </div>
+      </div>
+      <div class="speaking-card">
+        <div class="speaking-card-icon">💪</div>
+        <h3 class="serif">Anchoring the Storm: Finding Stability in Crisis</h3>
+        <p>Based on her four-book series — practical, prophetically grounded tools for navigating life's most turbulent seasons without losing your faith, your identity, or your mind.</p>
+        <div class="speaking-topics">
+          <span class="speaking-topic">Crisis & Resilience</span>
+          <span class="speaking-topic">Emotional Regulation</span>
+          <span class="speaking-topic">Faith-Based Tools</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Media Kit Downloads -->
+    <div class="media-kit-box reveal">
+      <div>
+        <div class="section-label" style="color:var(--goldlt);">Media Kit</div>
+        <h3 class="serif">Everything you need to book & promote</h3>
+        <p>Download Boladale's official media kit — including her professional bio, headshots, speaking topics, technical requirements, and testimonials — ready for your event program, website, or press release.</p>
+        <a href="mailto:admin@dttcams.com?subject=Media%20Kit%20Request" class="btn-white">Request Full Media Kit</a>
+      </div>
+      <div>
+        <div class="kit-items">
+          <a href="mailto:admin@dttcams.com?subject=Short%20Bio%20Request" class="kit-item">
+            <span class="kit-item-icon">📄</span>
+            <div><div class="kit-item-label">Download</div><div class="kit-item-name">Short Bio (50 words)</div></div>
+            <span style="color:var(--goldlt);margin-left:auto;">↓</span>
+          </a>
+          <a href="mailto:admin@dttcams.com?subject=Full%20Bio%20Request" class="kit-item">
+            <span class="kit-item-icon">📋</span>
+            <div><div class="kit-item-label">Download</div><div class="kit-item-name">Full Bio & Credentials (300 words)</div></div>
+            <span style="color:var(--goldlt);margin-left:auto;">↓</span>
+          </a>
+          <a href="mailto:admin@dttcams.com?subject=Headshot%20Request" class="kit-item">
+            <span class="kit-item-icon">🖼️</span>
+            <div><div class="kit-item-label">Download</div><div class="kit-item-name">Professional Headshots (Hi-Res)</div></div>
+            <span style="color:var(--goldlt);margin-left:auto;">↓</span>
+          </a>
+          <a href="mailto:admin@dttcams.com?subject=Speaking%20Topics%20Request" class="kit-item">
+            <span class="kit-item-icon">🎤</span>
+            <div><div class="kit-item-label">Download</div><div class="kit-item-name">Speaking Topics & Requirements</div></div>
+            <span style="color:var(--goldlt);margin-left:auto;">↓</span>
+          </a>
+          <a href="mailto:admin@dttcams.com?subject=Logo%20Assets%20Request" class="kit-item">
+            <span class="kit-item-icon">✦</span>
+            <div><div class="kit-item-label">Download</div><div class="kit-item-name">Brand Logos & Assets</div></div>
+            <span style="color:var(--goldlt);margin-left:auto;">↓</span>
+          </a>
+        </div>
+        <div class="testimonial-speaking" style="margin-top:20px;">
+          <p>"When Prophetess Boladale speaks, the room changes. She carries clinical truth and prophetic fire in the same breath — and lives are never the same after."</p>
+          <cite>— Event Coordinator, Women's Healing Conference</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- BLOG — PROPHETIC TEACHINGS -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section id="blog">
+  <div class="container">
+    <div class="section-label reveal">Prophetic Teachings & Insights</div>
+    <div class="section-head reveal" style="max-width:560px;">Words that anchor, illuminate, and set free</div>
+
+    <!-- Featured Posts -->
+    <div class="blog-featured reveal">
+      <div class="blog-featured-card" onclick="openBlogPost(0)">
+        <div class="blog-featured-eyebrow">Featured Teaching · Trauma & Faith</div>
+        <div class="blog-featured-title serif">When God Feels Silent in the Storm: A Clinical and Prophetic Perspective</div>
+        <div class="blog-featured-excerpt">Many believers interpret God's silence as punishment or abandonment. But what if the silence is not absence — what if it is the sound of healing in progress?</div>
+        <div class="blog-featured-meta">
+          <span class="blog-date">August 2026</span>
+          <span class="blog-read">Read Teaching →</span>
+        </div>
+      </div>
+      <div class="blog-sidebar">
+        <div class="blog-side-card" onclick="openBlogPost(1)">
+          <div class="blog-side-cat">Parenting & Wholeness</div>
+          <div class="blog-side-title serif">What Your Child's Anxiety Is Really Telling You About You</div>
+          <div class="blog-side-date">July 2026</div>
+        </div>
+        <div class="blog-side-card" onclick="openBlogPost(2)">
+          <div class="blog-side-cat">Identity & Healing</div>
+          <div class="blog-side-title serif">You Are Not What Broke You: Reclaiming Your God-Given Identity</div>
+          <div class="blog-side-date">June 2026</div>
+        </div>
+        <div class="blog-side-card" onclick="openBlogPost(3)">
+          <div class="blog-side-cat">Mental Health & Church</div>
+          <div class="blog-side-title serif">Why the Church Must Stop Calling Depression a Faith Problem</div>
+          <div class="blog-side-date">May 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="blog-grid reveal">
+      <div class="blog-card" onclick="openBlogPost(4)">
+        <div class="blog-card-top">🕊️</div>
+        <div class="blog-card-body">
+          <div class="blog-card-cat">Emotional Wellness</div>
+          <div class="blog-card-title serif">The Difference Between Rest and Avoidance — and Why It Matters</div>
+          <div class="blog-card-excerpt">Godly rest restores. Avoidance prolongs. Here's how to tell which one you're doing.</div>
+          <div class="blog-card-date">April 2026</div>
+        </div>
+      </div>
+      <div class="blog-card" onclick="openBlogPost(5)">
+        <div class="blog-card-top">🌱</div>
+        <div class="blog-card-body">
+          <div class="blog-card-cat">Trauma & Recovery</div>
+          <div class="blog-card-title serif">5 Signs Your Body Is Still Carrying Trauma (Even When Your Mind Says You're Fine)</div>
+          <div class="blog-card-excerpt">Trauma lives in the nervous system long after the memory fades. Learn the signs your body is still speaking.</div>
+          <div class="blog-card-date">March 2026</div>
+        </div>
+      </div>
+      <div class="blog-card" onclick="openBlogPost(6)">
+        <div class="blog-card-top">✨</div>
+        <div class="blog-card-body">
+          <div class="blog-card-cat">Life Purpose</div>
+          <div class="blog-card-title serif">Purpose Doesn't Wait for Perfect: Moving Forward Before You Feel Ready</div>
+          <div class="blog-card-excerpt">God rarely calls the fully healed. He calls the willing and heals them on the way.</div>
+          <div class="blog-card-date">February 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Write New Post -->
+    <div class="blog-write reveal">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+        <div>
+          <h3 class="serif">Share a New Teaching</h3>
+          <p>Add your own prophetic words, reflections, and clinical insights directly to your blog. Your voice matters — publish directly from here.</p>
+          <div class="blog-form" id="blogForm">
+            <input type="text" class="blog-input" id="postTitle" placeholder="Teaching title…"/>
+            <div class="blog-form-row">
+              <select class="blog-input" id="postCat">
+                <option value="Trauma & Faith">Trauma & Faith</option>
+                <option value="Parenting & Wholeness">Parenting & Wholeness</option>
+                <option value="Identity & Healing">Identity & Healing</option>
+                <option value="Mental Health & Church">Mental Health & Church</option>
+                <option value="Emotional Wellness">Emotional Wellness</option>
+                <option value="Life Purpose">Life Purpose</option>
+                <option value="Prophetic Word">Prophetic Word</option>
+              </select>
+              <input type="text" class="blog-input" id="postVerse" placeholder="Key scripture (optional)"/>
+            </div>
+            <textarea class="blog-input blog-textarea" id="postContent" placeholder="Write your teaching here… pour out what's on your heart."></textarea>
+            <button class="btn-white" onclick="publishPost()" style="align-self:flex-start;">Publish Teaching ✦</button>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--goldlt);margin-bottom:16px;">Your Published Teachings</p>
+          <div class="blog-posts-list" id="userPostsList">
+            <p style="font-size:13px;color:rgba(255,255,255,.3);font-style:italic;">Your published teachings will appear here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Post Modal -->
+<div class="blog-modal" id="blogModal">
+  <button class="blog-modal-close" onclick="closeBlogModal()">×</button>
+  <div class="blog-modal-inner">
+    <div class="blog-modal-hero">
+      <div class="blog-modal-cat" id="modalCat"></div>
+      <div class="blog-modal-title serif" id="modalTitle"></div>
+      <div class="blog-modal-date" id="modalDate"></div>
+    </div>
+    <div class="blog-modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- EVENTS CALENDAR -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section id="events">
+  <div class="container">
+    <div class="section-label reveal">Events & Ministry Calendar</div>
+    <div class="section-head reveal" style="max-width:520px;">Come encounter healing in person</div>
+    <p class="reveal" style="font-size:15px;color:var(--ink);opacity:.7;line-height:1.85;max-width:580px;margin-bottom:56px;">From Moving Beyond My Brokenness livestreams and conferences, to Divine Touch workshops and speaking engagements — find your next encounter with healing here.</p>
+
+    <div class="events-layout">
+      <!-- Events List -->
+      <div class="events-list reveal" id="eventsList"></div>
+
+      <!-- Sidebar -->
+      <div class="add-event-box reveal reveal-delay-2">
+        <!-- Mini Calendar -->
+        <div style="margin-bottom:24px;">
+          <div class="cal-month-label serif" id="calMonthLabel"></div>
+          <div class="calendar-strip" id="calDayLabels"></div>
+          <div class="calendar-strip" id="calGrid"></div>
+        </div>
+        <div style="height:1px;background:rgba(184,146,42,.15);margin-bottom:24px;"></div>
+
+        <!-- Add Event Form -->
+        <h3 class="serif" style="font-size:20px;color:var(--plum);margin-bottom:6px;">Add an Event</h3>
+        <p style="font-size:13px;color:var(--ink);opacity:.6;margin-bottom:18px;line-height:1.6;">Post your next workshop, livestream, or speaking engagement.</p>
+        <div class="event-form" id="eventForm">
+          <input type="text" class="event-input" id="evTitle" placeholder="Event title…"/>
+          <select class="event-input" id="evType">
+            <option value="Workshop">Workshop</option>
+            <option value="Livestream">Livestream</option>
+            <option value="Speaking">Speaking Engagement</option>
+            <option value="Conference">Conference</option>
+            <option value="Group Session">Group Session</option>
+            <option value="Book Event">Book Event</option>
+          </select>
+          <input type="date" class="event-input" id="evDate"/>
+          <input type="time" class="event-input" id="evTime" placeholder="Time"/>
+          <input type="text" class="event-input" id="evLocation" placeholder="Location or 'Virtual / Zoom'"/>
+          <input type="text" class="event-input" id="evLink" placeholder="Registration link (optional)"/>
+          <button class="btn-primary" onclick="addEvent()" style="border:none;cursor:pointer;font-family:'Jost',sans-serif;">Add to Calendar ✦</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect">
+  <div class="container">
+    <div class="connect-grid">
+      <div class="reveal">
+        <div class="section-label" style="color:var(--goldlt);">Connect</div>
+        <div class="section-head" style="color:var(--white);">You don't have to keep carrying this alone</div>
+        <p class="connect-sub">Whether you're ready to book a session, join a workshop, access the healing app, or simply ask a question — Boladale and the Divine Touch team are here.</p>
+        <div class="connect-cards">
+          <a href="tel:4106969995" class="connect-card">
+            <span class="connect-card-icon">📞</span>
+            <div><div class="connect-card-label">Call or Text</div><div class="connect-card-value">410.696.3335</div></div>
+          </a>
+          <a href="mailto:admin@dttcams.com" class="connect-card">
+            <span class="connect-card-icon">✉️</span>
+            <div><div class="connect-card-label">Email</div><div class="connect-card-value">admin@dttcams.com</div></div>
+          </a>
+          <a href="https://www.divinetouchcounselingcenter.com" target="_blank" class="connect-card">
+            <span class="connect-card-icon">🌐</span>
+            <div><div class="connect-card-label">Website</div><div class="connect-card-value">divinetouchcounselingcenter.com</div></div>
+          </a>
+          <a href="#" class="connect-card">
+            <span class="connect-card-icon">📍</span>
+            <div><div class="connect-card-label">Office</div><div class="connect-card-value">2301 Dorsey Road, Suite 208, Glen Burnie, MD</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="connect-form reveal reveal-delay-2">
+        <h3 class="serif">Send a Message</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Your first name"/>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Your last name"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="Your email address"/>
+        </div>
+        <div class="form-group">
+          <label>I'm Interested In</label>
+          <select>
+            <option value="">Select a service</option>
+            <option>Individual Counseling</option>
+            <option>Couples Counseling</option>
+            <option>Child / Adolescent Therapy</option>
+            <option>Group Therapy</option>
+            <option>Faith-Based Mentoring</option>
+            <option>Speaking / Workshop Inquiry</option>
+            <option>Moving Beyond App</option>
+            <option>Book / Author Inquiry</option>
+            <option>General Question</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Share what's on your heart — we're listening…"></textarea>
+        </div>
+        <button class="btn-form" onclick="handleSubmit(this)">Send Message ✦</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <h3>Boladale Gold</h3>
+    <p>Licensed clinician, prophetic voice, author, and healing ministry leader — touching many lives, one at a time.</p>
+    <p style="margin-top:16px;font-size:11px;color:rgba(255,255,255,.3);">© 2026 Boladale Gold-Okelanfaa. All rights reserved.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="#about">About Boladale</a>
+    <a href="#books">Anchoring the Storm</a>
+    <a href="#app">Moving Beyond App</a>
+    <a href="#ministry">Services</a>
+    <a href="#gallery">Photo Gallery</a>
+    <a href="#speaking">Speaking & Media Kit</a>
+    <a href="#blog">Prophetic Blog</a>
+    <a href="#events">Events Calendar</a>
+    <a href="#connect">Book a Session</a>
+  </div>
+  <div class="footer-col">
+    <h4>My Platforms</h4>
+    <a href="https://www.divinetouchcounselingcenter.com" target="_blank">Divine Touch Counseling</a>
+    <a href="#">Moving Beyond Ministry</a>
+    <a href="https://www.psychologytoday.com/us/therapists/divine-touch-therapeutic-counseling-and-mentoring-glen-burnie-md/366319" target="_blank">Psychology Today Profile</a>
+    <a href="https://www.amazon.com" target="_blank">Books on Amazon</a>
+    <div style="margin-top:20px;font-size:11px;color:rgba(255,255,255,.3);">Tel: 410.696.3335<br/>Fax: 443.960.7968<br/>admin@dttcams.com</div>
+  </div>
+  <div class="footer-bottom">
+    <p>Divine Touch Therapeutic Counseling & Mentoring Services, LLC · 2301 Dorsey Road, Suite 208, Glen Burnie, MD · Moving Beyond My Brokenness International</p>
+    <p class="footer-verse serif">"...touching many lives, one at a time"</p>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── BLOG ─────────────────────────────────────────────────
+  const builtInPosts = [
+    {
+      cat: "Trauma & Faith", date: "August 2026",
+      title: "When God Feels Silent in the Storm: A Clinical and Prophetic Perspective",
+      verse: "\"Even though I walk through the darkest valley, I will fear no evil, for you are with me.\" — Psalm 23:4",
+      body: [
+        "One of the most painful experiences a believer can have is to cry out to God in the middle of their most devastating season — and hear nothing back. No word. No confirmation. No sense of His presence. And in that silence, the enemy whispers what the wounded heart already fears: He has left you. You've gone too far. You are beyond the reach of healing.",
+        "But here is what 14 years of sitting with people in their darkest rooms has taught me: the silence of God is not the absence of God. It is often the sound of Him doing the deepest work — the kind that cannot be narrated while it is happening.",
+        "Clinically, we understand that the nervous system needs periods of quiet integration to process and consolidate healing. After acute trauma, the brain literally needs silence to reorganize. The amygdala — your brain's alarm system — cannot calm while it is being overwhelmed with input. Healing requires a kind of holy stillness.",
+        "Prophetically, I have come to believe the same is true of the spirit. There are seasons where God is so close, so actively at work, that His presence cannot be spoken — it can only be inhabited. The womb is silent. But what grows there changes everything.",
+        "If you are in a season of spiritual silence today, I want to offer you this reframe: What if the silence is not His judgment on your past? What if it is His investment in your future? What if He is not distant — but simply so near that He has moved past words into presence?",
+        "You are not abandoned. You are being anchored."
+      ]
+    },
+    {
+      cat: "Parenting & Wholeness", date: "July 2026",
+      title: "What Your Child's Anxiety Is Really Telling You About You",
+      verse: "\"Train up a child in the way he should go; even when he is old he will not depart from it.\" — Proverbs 22:6",
+      body: [
+        "I want to tell you something that I have witnessed over and over again in my clinical work — something that is difficult to hear, but that carries extraordinary hope inside of it: when a child is struggling with anxiety or depression, the healing almost never begins with the child.",
+        "It begins with the parent.",
+        "When I was working with juveniles at Adventist Behavioral Health, I watched mothers sit across from me, convinced that their child's self-harm was a punishment from God — proof that they had failed, proof that something was fundamentally broken in their family line. And I would gently, carefully begin to redirect: What if this is not punishment? What if this is actually a love signal — your child's nervous system saying, 'I learned to feel this way by living next to someone who felt this way'?",
+        "Anxiety is not a character flaw. It is a learned pattern. And patterns are transmitted not through teaching, but through proximity. A child who grows up next to an anxious, unhealed parent learns to read the world through an anxious lens — not because anyone intended harm, but because the nervous system is always taking its cue from the primary attachment figure.",
+        "The most loving thing you can do for your child is to do the work yourself. Not because you are to blame — but because you are the most powerful healer in your child's world. When you heal, they have permission to heal. When you move beyond what broke you, you take your whole household with you.",
+        "That is not guilt. That is the most beautiful invitation I know."
+      ]
+    },
+    {
+      cat: "Identity & Healing", date: "June 2026",
+      title: "You Are Not What Broke You: Reclaiming Your God-Given Identity",
+      verse: "\"See, I am doing a new thing! Now it springs up; do you not perceive it?\" — Isaiah 43:19",
+      body: [
+        "Somewhere between the wound and the waiting, many of us made a trade we did not even realize we were making. We traded our identity for our injury. We allowed what happened to us to become the answer to the question: Who am I?",
+        "I am the one who was abandoned. I am the one who was abused. I am the one whose marriage failed, whose child rebelled, whose body betrayed them, whose church hurt them. I am my diagnosis. I am my history. I am my worst season.",
+        "But beloved — you are not what broke you. You are what survived it. And survival, in God's economy, is never the end of the story. It is always the beginning of the testimony.",
+        "Clinically, identity disruption is one of the most common and most devastating effects of complex trauma. When the self has been repeatedly wounded, the psyche begins to organize itself around the wound rather than around its original design. The wound becomes the center of gravity — and everything else orbits it.",
+        "The work of healing is not to erase the wound. It is to relocate your center. To move the organizing principle of your identity from what happened to you back to who God says you are. To let the wound become a scar — evidence of survival — rather than a permanent address.",
+        "You are not your past. You are not your diagnosis. You are not what they said about you, or what they did to you, or what you did in the season when you were not yet whole. You are a beloved child of God, in the middle of a becoming. And that becoming is not finished yet."
+      ]
+    },
+    {
+      cat: "Mental Health & Church", date: "May 2026",
+      title: "Why the Church Must Stop Calling Depression a Faith Problem",
+      verse: "\"He heals the brokenhearted and binds up their wounds.\" — Psalm 147:3",
+      body: [
+        "I love the church. I have been shaped by the church. My faith is the bedrock of everything I do clinically and prophetically. And because I love the church, I must say what I have watched cost people their lives: We have to stop telling depressed people to just pray more.",
+        "Depression is not a spiritual discipline problem. It is not evidence of weak faith. It is not God's punishment. It is a medical and neurological condition — involving measurable changes in brain chemistry, neural pathway disruption, and dysregulated stress-response systems — that requires compassionate, informed care.",
+        "When someone comes to their pastor or church leader in the grip of clinical depression and is told to fast, pray, and rebuke the spirit of depression — and nothing changes — they do not conclude that the prescription was wrong. They conclude that they are too broken even for God to fix. And that conclusion can be lethal.",
+        "Faith and therapy are not enemies. They are allies. The God who inspired Psalm 22 — a raw, unfiltered cry of abandonment — is the same God who designed the human brain and placed within us the capacity for healing. He works through community. Through truth-tellers. Through clinicians. Through medication when needed. Through all of it.",
+        "The most faithful thing a church can do for its members is to normalize getting help. To say from the pulpit: you are not less holy for needing a therapist. To have mental health resources available. To partner with clinicians who share the faith. To create a culture where it is safe to say I am not okay — and to be met not with a scripture that dismisses the pain, but with a hand that holds it.",
+        "The church should be the most psychologically safe place on earth. We are not there yet. But we can be."
+      ]
+    },
+    {
+      cat: "Emotional Wellness", date: "April 2026",
+      title: "The Difference Between Rest and Avoidance — and Why It Matters",
+      verse: "\"Be still, and know that I am God.\" — Psalm 46:10",
+      body: [
+        "Not all stillness is rest. And not all busyness is avoidance. But the lines between the two are far more blurred than most of us would like to admit — and the consequences of confusing them are significant.",
+        "True rest is restorative. It returns you to yourself. You emerge from it with more capacity, more clarity, more presence. It is not the absence of discomfort — it is the deliberate choice to stop moving so that the work of integration can happen beneath the surface.",
+        "Avoidance, by contrast, is stillness in service of not feeling. It looks like rest from the outside. You are lying still. You are not doing anything. But inside, you are working overtime to keep something at bay. The silence is not peace — it is pressure. And the longer you hold the door closed, the heavier it becomes.",
+        "Here is how I help clients tell the difference: After your rest, do you feel lighter or heavier? Do you return to life with a sense of renewal, or do you return with the same weight — plus the added shame of having spent time 'doing nothing'? Does the stillness create space, or does it create distance between you and the things you know you need to face?",
+        "God's invitation to be still is an invitation into his presence — not an invitation to hide from your life. If your rest is actually a hiding place, it is time to ask: What am I avoiding? And what would it take to face it with support?"
+      ]
+    },
+    {
+      cat: "Trauma & Recovery", date: "March 2026",
+      title: "5 Signs Your Body Is Still Carrying Trauma (Even When Your Mind Says You're Fine)",
+      verse: "\"For we are God's handiwork, created in Christ Jesus to do good works.\" — Ephesians 2:10",
+      body: [
+        "One of the most confusing aspects of trauma recovery is that the mind often moves on before the body does. You can have done years of talk therapy. You can have forgiven. You can have found faith, found community, built a new life — and still find yourself hijacked by a smell, a tone of voice, a certain quality of light that sends your nervous system into a response that feels completely out of proportion to what is actually happening.",
+        "This is not weakness. This is biology. The body stores what the mind could not process — and until the body is included in the healing work, it continues to carry the archive of every wound.",
+        "Here are five signs that your body may still be holding trauma your mind has already declared resolved: First, you experience chronic physical tension — especially in the shoulders, jaw, chest, or gut — that has no clear medical cause. Second, you startle easily, or feel hypervigilant in environments that others experience as safe. Third, you have difficulty sleeping — either staying asleep, or waking from sleep feeling already exhausted. Fourth, you notice emotional reactions that feel disproportionate to the present moment, as if your response belongs to a different situation entirely. Fifth, you experience numbness or disconnection from your body — difficulty feeling pleasure, or a sense of living slightly outside of yourself.",
+        "If any of these resonate, please hear this: your body is not betraying you. It is communicating with you. And it is asking for the same care and compassion you have extended to your mind and spirit. Somatic approaches to healing — body-based therapies that include the nervous system in the recovery process — can reach what words alone cannot.",
+        "You were made whole — body, mind, and spirit. Your healing can be whole too."
+      ]
+    },
+    {
+      cat: "Life Purpose", date: "February 2026",
+      title: "Purpose Doesn't Wait for Perfect: Moving Forward Before You Feel Ready",
+      verse: "\"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you.\" — Jeremiah 29:11",
+      body: [
+        "One of the most common things I hear in my counseling room — and one of the most common things I have said to God in my own prayer closet — is this: I will do it when I am healed. When I am stronger. When I have processed everything. When I feel ready.",
+        "And every time, I hear the same quiet response: I did not wait for Moses to be fully healed before I sent him to Pharaoh. I did not wait for Peter to have no more fear before I called him to walk on water. I did not wait for Paul to be free of his thorn before I used him to turn the ancient world upside down.",
+        "God does not call the finished. He calls the willing — and He does some of His most significant healing work in the middle of the mission, not before it begins.",
+        "This does not mean we skip the healing work. Therapy matters. Self-care matters. Support matters. Processing and integrating trauma is not optional — it is essential. But it is not the prerequisite for purpose. It is often the companion of it.",
+        "The version of you that starts before you are ready will become the version of you that was always meant to exist. You do not need to arrive at wholeness before you begin walking toward it. Every step you take in the direction of your calling is itself a healing act.",
+        "Move forward. God is already there, waiting for you to catch up."
+      ]
+    },
+  ];
+
+  let userPosts = [];
+  let currentBlogIndex = 0;
+  const allPosts = () => [...builtInPosts, ...userPosts];
+
+  function openBlogPost(index) {
+    currentBlogIndex = index;
+    const post = allPosts()[index];
+    if (!post) return;
+    document.getElementById('modalCat').textContent = post.cat;
+    document.getElementById('modalTitle').textContent = post.title;
+    document.getElementById('modalDate').textContent = post.date || new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'});
+    const body = document.getElementById('modalBody');
+    body.innerHTML = '';
+    if (post.verse) {
+      const bq = document.createElement('blockquote');
+      bq.className = 'blog-modal-verse'; bq.textContent = post.verse;
+      body.appendChild(bq);
+    }
+    (post.body || [post.content]).forEach(para => {
+      const p = document.createElement('p'); p.textContent = para; body.appendChild(p);
+    });
+    document.getElementById('blogModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBlogModal() {
+    document.getElementById('blogModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('blogModal').addEventListener('click', e => {
+    if (e.target === document.getElementById('blogModal')) closeBlogModal();
+  });
+
+  function publishPost() {
+    const title = document.getElementById('postTitle').value.trim();
+    const content = document.getElementById('postContent').value.trim();
+    const cat = document.getElementById('postCat').value;
+    const verse = document.getElementById('postVerse').value.trim();
+    if (!title || !content) { alert('Please add a title and content for your teaching.'); return; }
+    const post = { cat, date: new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'}), title, verse, body: [content], isUser: true };
+    userPosts.unshift(post);
+    renderUserPosts();
+    document.getElementById('postTitle').value = '';
+    document.getElementById('postContent').value = '';
+    document.getElementById('postVerse').value = '';
+  }
+
+  function renderUserPosts() {
+    const list = document.getElementById('userPostsList');
+    if (userPosts.length === 0) {
+      list.innerHTML = '<p style="font-size:13px;color:rgba(255,255,255,.3);font-style:italic;">Your published teachings will appear here.</p>';
+      return;
+    }
+    list.innerHTML = userPosts.map((p, i) => `
+      <div class="blog-post-item">
+        <div>
+          <div class="blog-post-item-title">${p.title}</div>
+          <div class="blog-post-item-meta">${p.cat} · ${p.date}</div>
+        </div>
+        <button class="blog-post-delete" onclick="deleteUserPost(${i})" title="Delete">×</button>
+      </div>
+    `).join('');
+  }
+
+  function deleteUserPost(i) {
+    if (!confirm('Delete this teaching?')) return;
+    userPosts.splice(i, 1);
+    renderUserPosts();
+  }
+
+  // ── EVENTS ───────────────────────────────────────────────
+  const defaultEvents = [
+    { id:1, title:"Moving Beyond My Brokenness — Monthly Livestream", type:"Livestream", date:"2026-08-22", time:"7:00 PM", location:"Facebook Live · Moving Beyond My Brokenness International", link:"", featured:true },
+    { id:2, title:"Women's Healing & Wholeness Workshop", type:"Workshop", date:"2026-09-13", time:"10:00 AM", location:"Divine Touch Counseling Center, Glen Burnie MD", link:"", featured:false },
+    { id:3, title:"Anchoring the Storm — Book Talk & Signing", type:"Book Event", date:"2026-09-27", time:"2:00 PM", location:"Glen Burnie, MD (Venue TBA)", link:"", featured:false },
+    { id:4, title:"Breaking the Cycle: Parenting from Wholeness Conference", type:"Conference", date:"2026-10-18", time:"9:00 AM", location:"Virtual · Zoom", link:"", featured:true },
+    { id:5, title:"Faith & Mental Health Panel Discussion", type:"Speaking", date:"2026-11-08", time:"6:00 PM", location:"TBA — Maryland Area", link:"", featured:false },
+    { id:6, title:"Moving Beyond My Brokenness Annual Gathering", type:"Conference", date:"2026-12-06", time:"10:00 AM", location:"Greater Baltimore Area (Venue TBA)", link:"", featured:true },
+    { id:7, title:"Trauma Recovery Group — Spring Session", type:"Group Session", date:"2026-05-10", time:"5:30 PM", location:"Divine Touch Counseling Center", link:"", featured:false },
+  ];
+
+  let allEvents = [...defaultEvents];
+  let rsvpd = new Set();
+
+  function renderEvents() {
+    const now = new Date();
+    const sorted = [...allEvents].sort((a,b) => new Date(a.date) - new Date(b.date));
+    const upcoming = sorted.filter(e => new Date(e.date) >= now);
+    const past = sorted.filter(e => new Date(e.date) < now);
+    const display = [...upcoming, ...past];
+
+    document.getElementById('eventsList').innerHTML = display.map(ev => {
+      const d = new Date(ev.date + 'T12:00:00');
+      const isPast = d < now;
+      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      return `
+        <div class="event-card${ev.featured?' featured':''}${isPast?' past':''}">
+          <div class="event-date-block">
+            <div class="event-month">${months[d.getMonth()]}</div>
+            <div class="event-day serif">${d.getDate()}</div>
+            <div class="event-year">${d.getFullYear()}</div>
+          </div>
+          <div class="event-body">
+            <div class="event-type">${ev.type}${ev.featured?' · ✦ Featured':''}</div>
+            <div class="event-title serif">${ev.title}</div>
+            <div class="event-details">
+              <span class="event-detail">🕐 ${ev.time}</span>
+              <span class="event-detail">📍 ${ev.location}</span>
+            </div>
+          </div>
+          <div class="event-action">
+            ${isPast
+              ? `<button class="event-rsvp" disabled style="opacity:.4;cursor:default;">Concluded</button>`
+              : `<button class="event-rsvp${rsvpd.has(ev.id)?' rsvped':''}" onclick="rsvpEvent(event,${ev.id})">${rsvpd.has(ev.id)?'✓ Registered':'RSVP'}</button>`
+            }
+          </div>
+        </div>`;
+    }).join('');
+
+    renderCalendar();
+  }
+
+  function rsvpEvent(e, id) {
+    e.stopPropagation();
+    if (rsvpd.has(id)) return;
+    rsvpd.add(id);
+    renderEvents();
+  }
+
+  function addEvent() {
+    const title = document.getElementById('evTitle').value.trim();
+    const date = document.getElementById('evDate').value;
+    const time = document.getElementById('evTime').value;
+    const location = document.getElementById('evLocation').value.trim() || 'TBA';
+    const type = document.getElementById('evType').value;
+    const link = document.getElementById('evLink').value.trim();
+    if (!title || !date) { alert('Please add a title and date for your event.'); return; }
+    const fmtTime = time ? new Date('1970-01-01T'+time).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}) : 'TBA';
+    allEvents.push({ id: Date.now(), title, type, date, time: fmtTime, location, link, featured: false });
+    document.getElementById('evTitle').value = '';
+    document.getElementById('evDate').value = '';
+    document.getElementById('evTime').value = '';
+    document.getElementById('evLocation').value = '';
+    document.getElementById('evLink').value = '';
+    renderEvents();
+  }
+
+  function renderCalendar() {
+    const now = new Date();
+    const y = now.getFullYear(), m = now.getMonth();
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    document.getElementById('calMonthLabel').textContent = months[m] + ' ' + y;
+
+    const dayLabels = document.getElementById('calDayLabels');
+    dayLabels.innerHTML = ['Su','Mo','Tu','We','Th','Fr','Sa'].map(d => `<div class="cal-day-label">${d}</div>`).join('');
+
+    const firstDay = new Date(y, m, 1).getDay();
+    const daysInMonth = new Date(y, m+1, 0).getDate();
+
+    const eventDays = new Set(allEvents
+      .filter(e => { const d = new Date(e.date + 'T12:00:00'); return d.getFullYear()===y && d.getMonth()===m; })
+      .map(e => new Date(e.date + 'T12:00:00').getDate())
+    );
+
+    let cal = '';
+    for (let i = 0; i < firstDay; i++) cal += '<div class="cal-day"></div>';
+    for (let d = 1; d <= daysInMonth; d++) {
+      const isToday = d === now.getDate();
+      const hasEv = eventDays.has(d);
+      cal += `<div class="cal-day${hasEv?' has-event':''}${isToday?' today':''}" title="${hasEv?'Event this day':''}">${d}</div>`;
+    }
+    document.getElementById('calGrid').innerHTML = cal;
+  }
+
+  // Init events on load
+  renderEvents();
+
+  // ── GALLERY ──────────────────────────────────────────────
+  let galleryPhotos = [];
+  let pendingFiles = [];
+  let currentLightboxIndex = 0;
+  let currentFilter = 'all';
+
+  // Drag & drop
+  const zone = document.getElementById('uploadZone');
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault(); zone.classList.remove('drag-over');
+    handleFiles(e.dataTransfer.files);
+  });
+
+  function handleFiles(files) {
+    if (!files || files.length === 0) return;
+    pendingFiles = Array.from(files);
+    document.getElementById('uploadForm').style.display = 'block';
+    zone.style.borderColor = 'var(--gold)';
+    zone.style.background = 'rgba(184,146,42,.04)';
+  }
+
+  function cancelUpload() {
+    pendingFiles = [];
+    document.getElementById('uploadForm').style.display = 'none';
+    document.getElementById('uploadSuccess').style.display = 'none';
+    document.getElementById('photoInput').value = '';
+    zone.style.borderColor = '';
+    zone.style.background = '';
+  }
+
+  function processUpload() {
+    if (pendingFiles.length === 0) return;
+    const caption = document.getElementById('photoCaption').value || 'Boladale Gold';
+    const category = document.getElementById('photoCategory').value;
+
+    // Show progress
+    const prog = document.getElementById('uploadProgress');
+    const bar = document.getElementById('progressBar');
+    prog.style.display = 'block';
+    bar.style.width = '0%';
+    let progress = 0;
+    const timer = setInterval(() => {
+      progress += 12;
+      bar.style.width = Math.min(progress, 90) + '%';
+      if (progress >= 90) clearInterval(timer);
+    }, 80);
+
+    // Read each file
+    let processed = 0;
+    pendingFiles.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        galleryPhotos.push({ src: e.target.result, caption, category, id: Date.now() + Math.random() });
+        processed++;
+        if (processed === pendingFiles.length) {
+          clearInterval(timer);
+          bar.style.width = '100%';
+          setTimeout(() => {
+            prog.style.display = 'none';
+            bar.style.width = '0%';
+            document.getElementById('uploadSuccess').style.display = 'block';
+            renderGallery();
+            setTimeout(cancelUpload, 2200);
+          }, 400);
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function renderGallery(filter) {
+    if (filter) currentFilter = filter;
+    const grid = document.getElementById('galleryGrid');
+    const filtered = currentFilter === 'all' ? galleryPhotos : galleryPhotos.filter(p => p.category === currentFilter);
+
+    if (galleryPhotos.length === 0) {
+      // Show placeholders
+      grid.innerHTML = `
+        <div class="gallery-placeholder" style="aspect-ratio:8/5;min-height:220px;"><div class="ph-icon">🕊️</div><span>Ministry photos</span></div>
+        <div class="gallery-placeholder"><div class="ph-icon">✨</div><span>Speaking moments</span></div>
+        <div class="gallery-placeholder"><div class="ph-icon">📖</div><span>Books & media</span></div>
+        <div class="gallery-placeholder" style="aspect-ratio:8/5;min-height:220px;"><div class="ph-icon">🌿</div><span>Community impact</span></div>
+        <div class="gallery-placeholder"><div class="ph-icon">💞</div><span>Personal moments</span></div>
+        <div class="gallery-placeholder"><div class="ph-icon">🙏</div><span>Healing ministry</span></div>
+      `;
+      return;
+    }
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:48px 0;color:var(--ink);opacity:.4;font-style:italic;">No photos in this category yet. Upload some above!</div>`;
+      return;
+    }
+
+    grid.innerHTML = filtered.map((photo, i) => `
+      <div class="gallery-item${i % 4 === 0 ? ' wide' : ''}" onclick="openLightbox(${i})" data-index="${i}">
+        <img src="${photo.src}" alt="${photo.caption}" loading="lazy"/>
+        <div class="gallery-item-overlay">
+          <div class="gallery-item-tag">${photo.category}</div>
+          <div class="gallery-item-caption">${photo.caption}</div>
+        </div>
+        <button class="gallery-item-delete" onclick="deletePhoto(event,${photo.id})" title="Remove photo">×</button>
+      </div>
+    `).join('');
+
+    // Apply wide class via CSS for every 4th
+    grid.querySelectorAll('.gallery-item').forEach((el, i) => {
+      if (i % 4 === 0) el.style.gridColumn = 'span 2';
+    });
+  }
+
+  function deletePhoto(e, id) {
+    e.stopPropagation();
+    if (!confirm('Remove this photo from the gallery?')) return;
+    galleryPhotos = galleryPhotos.filter(p => p.id !== id);
+    renderGallery();
+  }
+
+  function filterGallery(cat, btn) {
+    currentFilter = cat;
+    document.querySelectorAll('.gallery-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    renderGallery(cat);
+  }
+
+  // ── LIGHTBOX ──────────────────────────────────────────────
+  function getFilteredPhotos() {
+    return currentFilter === 'all' ? galleryPhotos : galleryPhotos.filter(p => p.category === currentFilter);
+  }
+
+  function openLightbox(index) {
+    const photos = getFilteredPhotos();
+    if (photos.length === 0) return;
+    currentLightboxIndex = index;
+    document.getElementById('lightboxImg').src = photos[index].src;
+    document.getElementById('lightboxCaption').textContent = photos[index].caption;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightboxBtn() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeLightbox(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightboxBtn();
+  }
+
+  function navigateLightbox(dir) {
+    const photos = getFilteredPhotos();
+    currentLightboxIndex = (currentLightboxIndex + dir + photos.length) % photos.length;
+    document.getElementById('lightboxImg').src = photos[currentLightboxIndex].src;
+    document.getElementById('lightboxCaption').textContent = photos[currentLightboxIndex].caption;
+  }
+
+  // Keyboard nav for lightbox
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'Escape') closeLightboxBtn();
+  });
+
+  // Footer gallery link
+  document.querySelectorAll('a[href="#gallery"]').forEach(a => {
+    a.addEventListener('click', () => { setTimeout(() => renderGallery(), 100); });
+  });
+
+  // Form submit
+  function handleSubmit(btn) {
+    btn.textContent = '✓ Message Sent — Thank You!';
+    btn.style.background = '#6B8C74';
+    btn.disabled = true;
+  }
+</script>
+</body>
+</html>
